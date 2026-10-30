@@ -1,0 +1,20 @@
+{
+  "name": "skillswap-colinbleile",
+  "version": "1.0.0",
+  "description": "A platform to trade skills, learn new hobbies, and connect with community members.",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colinbleile-dev/skillswap-ColinBleile.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "jest": "^30.5.2"
+  }
+}

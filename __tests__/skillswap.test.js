@@ -1,0 +1,43 @@
+const { filterSkillsByCategory, calculateTotalCost } = require('../skillswap-functions.js');
+
+describe('filterSkillsByCategory', () => {
+  const skills = [
+    { title: 'Python Tutoring', category: 'Programming', price: 20 },
+    { title: 'Guitar Lessons', category: 'Music', price: 15 },
+    { title: 'Resume Review', category: 'Career', price: 0 },
+    { title: 'Web Development', category: 'Programming', price: 25 }
+  ];
+
+  test('filters skills by specific category', () => {
+    const result = filterSkillsByCategory(skills, 'Programming');
+    expect(result).toEqual([
+      { title: 'Python Tutoring', category: 'Programming', price: 20 },
+      { title: 'Web Development', category: 'Programming', price: 25 }
+    ]);
+  });
+
+  test('handles "All" category by returning all skills', () => {
+    const result = filterSkillsByCategory(skills, 'All');
+    expect(result).toEqual(skills);
+  });
+
+  test('returns an empty array when no matches are found', () => {
+    const result = filterSkillsByCategory(skills, 'Cooking');
+    expect(result).toEqual([]);
+  });
+});
+
+describe('calculateTotalCost', () => {
+  test('returns the correct values for different hours and rates', () => {
+    expect(calculateTotalCost(20, 2)).toBe(40);
+  });
+
+  test('handles free sessions (0 price) and zero hours', () => {
+    expect(calculateTotalCost(0, 3)).toBe(0);
+    expect(calculateTotalCost(20, 0)).toBe(0);
+  });
+
+  test('returns correct value for decimal hours', () => {
+    expect(calculateTotalCost(25, 1.5)).toBe(37.5);
+  });
+});
